@@ -55,7 +55,17 @@ public class IntToIntegerService {
     }
     
     
-    // 构建多线程处理数据 -> 对 atomic线程做处理
+    /**
+     * 构建多线程处理数据 -> 对 atomic线程做处理
+     * int 和 Atomic 线程安全测试
+     * @throws ExecutionException
+     * @throws InterruptedException
+     * 
+     * ! 结果
+     * 线程有问题数据:94010
+     * 线程没有有问题数据:101066
+     * 求和 101066
+     */
     public void executorInt() throws ExecutionException, InterruptedException {
         final IntNumberVo intNumberVo = new IntNumberVo();
         List<List<Integer>> list = InstanceUtil.groupByNumber(
@@ -116,9 +126,14 @@ public class IntToIntegerService {
         System.out.println("求和 " + (sum * 2 + 1000));
     }
     
-    public static void main(String[] args) throws ExecutionException, InterruptedException {
-        IntToIntegerService intToIntegerService = new IntToIntegerService();
-        intToIntegerService.executorInt();
+    public static void main(String[] args) throws Exception {
+//        IntToIntegerService intToIntegerService = new IntToIntegerService();
+//        intToIntegerService.executorInt();
+//        System.out.println("finish");
+        
+        int temp = 5;
+        if (temp == 5) 
+            throw new Exception();
         System.out.println("finish");
     }
 }
